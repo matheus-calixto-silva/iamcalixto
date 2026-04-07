@@ -6,12 +6,17 @@ export default function Hero() {
     <section className='min-h-screen flex items-center pt-24 pb-12'>
       {/* SVG Filter for neon duotone image effect */}
       <svg
-        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+        style={{
+          position: 'absolute',
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+        }}
         xmlns='http://www.w3.org/2000/svg'
         aria-hidden='true'
       >
         <defs>
-          <filter id='neon-duotone'>
+          <filter id='neon-duotone' colorInterpolationFilters='sRGB'>
             <feColorMatrix
               type='matrix'
               values='0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0'
