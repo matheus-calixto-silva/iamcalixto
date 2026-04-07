@@ -53,7 +53,7 @@ export default function Experience() {
 
         <div className='relative border-l border-white/10 ml-3 md:ml-4 space-y-16'>
           {experiences.map((exp) => (
-            <ExperienceItem key={exp.company} {...exp} />
+            <ExperienceItem key={`${exp.company}-${exp.period}`} {...exp} />
           ))}
         </div>
       </div>

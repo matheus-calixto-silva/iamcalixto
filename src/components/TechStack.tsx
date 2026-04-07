@@ -1,10 +1,17 @@
+import type { LucideIcon } from 'lucide-react';
 import { CheckCircle, Layout, Server, Terminal } from 'lucide-react';
 import TechCategory from '@/components/TechCategory';
 
-const categories = [
+interface CategoryData {
+  title: string;
+  icon: LucideIcon;
+  items: { name: string; primary?: boolean }[];
+}
+
+const categories: CategoryData[] = [
   {
     title: 'Frontend',
-    icon: <Layout strokeWidth={1.5} className='w-4 h-4' />,
+    icon: Layout,
     items: [
       { name: 'React', primary: true },
       { name: 'Next.js', primary: true },
@@ -19,7 +26,7 @@ const categories = [
   },
   {
     title: 'Backend',
-    icon: <Server strokeWidth={1.5} className='w-4 h-4' />,
+    icon: Server,
     items: [
       { name: 'NestJS', primary: true },
       { name: 'HonoJS', primary: true },
@@ -33,7 +40,7 @@ const categories = [
   },
   {
     title: 'Qualidade',
-    icon: <CheckCircle strokeWidth={1.5} className='w-4 h-4' />,
+    icon: CheckCircle,
     items: [
       { name: 'Jest', primary: true },
       { name: 'Vitest', primary: true },
@@ -43,7 +50,7 @@ const categories = [
   },
   {
     title: 'DevOps & Ferramentas',
-    icon: <Terminal strokeWidth={1.5} className='w-4 h-4' />,
+    icon: Terminal,
     items: [
       { name: 'Docker', primary: true },
       { name: 'Git Flow', primary: true },

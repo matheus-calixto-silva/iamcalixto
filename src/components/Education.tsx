@@ -33,15 +33,30 @@ export default function Education() {
             </h3>
             <ul className='space-y-3 text-lg text-[#888888] font-light'>
               <li className='flex items-start gap-3'>
-                <span className='text-[#E63946] mt-1.5 text-xs'>●</span>
+                <span
+                  className='text-[#E63946] mt-1.5 text-xs'
+                  aria-hidden='true'
+                >
+                  ●
+                </span>
                 TypeScript &amp; Full Stack (University of Helsinki)
               </li>
               <li className='flex items-start gap-3'>
-                <span className='text-[#E63946] mt-1.5 text-xs'>●</span>
+                <span
+                  className='text-[#E63946] mt-1.5 text-xs'
+                  aria-hidden='true'
+                >
+                  ●
+                </span>
                 React e JavaScript (Origamid)
               </li>
               <li className='flex items-start gap-3'>
-                <span className='text-[#E63946] mt-1.5 text-xs'>●</span>
+                <span
+                  className='text-[#E63946] mt-1.5 text-xs'
+                  aria-hidden='true'
+                >
+                  ●
+                </span>
                 Responsive Web Design (freeCodeCamp)
               </li>
             </ul>

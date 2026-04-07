@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { LucideIcon } from 'lucide-react';
 
 interface TechItem {
   name: string;
@@ -7,19 +7,19 @@ interface TechItem {
 
 interface TechCategoryProps {
   title: string;
-  icon: ReactNode;
+  icon: LucideIcon;
   items: TechItem[];
 }
 
 export default function TechCategory({
   title,
-  icon,
+  icon: Icon,
   items,
 }: TechCategoryProps) {
   return (
     <div>
       <h3 className='text-base text-[#888888] font-medium tracking-wide uppercase mb-6 flex items-center gap-2'>
-        {icon} {title}
+        <Icon strokeWidth={1.5} className='w-4 h-4' /> {title}
       </h3>
       <div className='flex flex-wrap gap-3'>
         {items.map((item) => (
