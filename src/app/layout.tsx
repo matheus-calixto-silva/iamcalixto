@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     'desenvolvedor fullstack, react, next.js, vue, nestjs, typescript, node.js, recife, pernambuco, frontend, backend, desenvolvedor web, portfolio',
   authors: [{ name: 'Matheus Calixto' }],
   robots: 'index, follow',
+  manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',
     url: 'https://iamcalixto.dev.br/',
