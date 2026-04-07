@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className='max-w-6xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between'>
         <a
           href='/'
-          className='text-xl font-semibold tracking-tight text-[#EDEDED] flex items-center gap-2 group'
+          className='text-xl font-semibold tracking-tight text-[#EDEDED] flex items-center gap-1 group'
         >
           M
           <span className='text-[#E63946] transition-transform duration-300 group-hover:scale-125'>
