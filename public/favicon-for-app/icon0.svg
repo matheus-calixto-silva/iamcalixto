@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="12" fill="#0a0a0a"/>
+  <text
+    x="50"
+    y="62"
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="38"
+    font-weight="600"
+    text-anchor="middle"
+    letter-spacing="1"
+  >
+    <tspan fill="#ededed">M</tspan><tspan fill="#e63946">.</tspan><tspan fill="#ededed">C</tspan>
+  </text>
+</svg>

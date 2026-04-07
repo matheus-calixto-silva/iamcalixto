@@ -1,0 +1,14 @@
+{
+  "name": "Matheus Calixto | Desenvolvedor Fullstack",
+  "short_name": "iamcalixto",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#e63946",
+  "background_color": "#0a0a0a",
+  "display": "standalone"
+}
