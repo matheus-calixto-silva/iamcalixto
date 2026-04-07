@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 interface TechItem {
   name: string;
   primary?: boolean;
@@ -5,7 +7,7 @@ interface TechItem {
 
 interface TechCategoryProps {
   title: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   items: TechItem[];
 }
 
