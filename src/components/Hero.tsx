@@ -6,7 +6,7 @@ export default function Hero() {
     <section className='min-h-screen flex items-center pt-24 pb-12'>
       {/* SVG Filter for neon duotone image effect */}
       <svg
-        className='hidden'
+        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
         xmlns='http://www.w3.org/2000/svg'
         aria-hidden='true'
       >
@@ -101,7 +101,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Halftone Portrait */}
-        <div className='lg:col-span-5 relative w-full max-w-md mx-auto lg:mx-0 aspect-4/5 rounded-2xl overflow-hidden group'>
+        <div className='lg:col-span-5 relative w-full max-w-md mx-auto lg:mx-0 aspect-4/5 rounded-2xl overflow-hidden group isolate'>
           <div className='absolute inset-0 bg-[#0A0A0A]' />
           <Image
             src='/hero-img.webp'
