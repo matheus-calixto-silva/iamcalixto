@@ -10,7 +10,7 @@ export default function About() {
         <div className='max-w-3xl'>
           <p className='text-xl md:text-2xl text-[#888888] font-light leading-relaxed'>
             Com mais de{' '}
-            <span className='text-[#EDEDED]'>4 anos de experiência</span>, sou
+            <span className='text-[#EDEDED]'>5 anos de experiência</span>, sou
             especialista em construir aplicações completas de ponta a ponta.
             Minha stack principal gira em torno de{' '}
             <span className='text-[#EDEDED]'>React</span>,{' '}

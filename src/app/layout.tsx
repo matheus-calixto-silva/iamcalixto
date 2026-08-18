@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title:
     'Matheus Calixto | Desenvolvedor Fullstack — React, Node.js, TypeScript',
   description:
-    'Matheus Calixto — Desenvolvedor Fullstack com +4 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js. Especialista em aplicações web e mobile escaláveis. Recife, PE.',
+    'Matheus Calixto — Desenvolvedor Fullstack com +5 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js. Especialista em aplicações web e mobile escaláveis. Recife, PE.',
   keywords:
     'desenvolvedor fullstack, react, next.js, vue, nestjs, typescript, node.js, recife, pernambuco, frontend, backend, desenvolvedor web, portfolio',
   authors: [{ name: 'Matheus Calixto' }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: 'https://iamcalixto.dev.br/',
     title: 'Matheus Calixto | Desenvolvedor Fullstack',
     description:
-      'Desenvolvedor Fullstack com +4 anos de experiência em React, Next.js, Vue, NestJS e TypeScript. Construindo experiências web & mobile escaláveis.',
+      'Desenvolvedor Fullstack com +5 anos de experiência em React, Next.js, Vue, NestJS e TypeScript. Construindo experiências web & mobile escaláveis.',
     images: [{ url: 'https://iamcalixto.dev.br/og-image.jpg' }],
     locale: 'pt_BR',
     siteName: 'Matheus Calixto',
@@ -37,7 +37,7 @@ const jsonLd = {
   url: 'https://iamcalixto.dev.br',
   jobTitle: 'Desenvolvedor Fullstack',
   description:
-    'Desenvolvedor Fullstack com mais de 4 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js.',
+    'Desenvolvedor Fullstack com mais de 5 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Recife',

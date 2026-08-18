@@ -1,0 +1,27 @@
+# Matheus Calixto
+
+> Portfólio pessoal de Matheus Calixto, Desenvolvedor Fullstack com mais de 5 anos de experiência (desde julho de 2021) em React, Next.js, Vue.js, NestJS, TypeScript e Node.js. Baseado em Recife, PE, Brasil.
+
+Este site é um portfólio de página única (single-page) contendo apresentação profissional, experiência de trabalho, stack de tecnologias e formação acadêmica.
+
+## Sobre
+
+- Cargo: Desenvolvedor Fullstack
+- Localização: Recife, Pernambuco, Brasil
+- Empresa atual: Green4T
+- Formação: IFPE — Instituto Federal de Pernambuco
+- Principais tecnologias: React, Next.js, Vue.js, TypeScript, NestJS, HonoJS, Node.js, Laravel, PostgreSQL, Docker
+
+## Páginas
+
+- [Home](https://iamcalixto.dev.br/): Página única com seções de apresentação (Hero), sobre (About), experiência profissional (Experience), stack de tecnologias (TechStack) e formação (Education).
+
+## Links
+
+- [LinkedIn](https://linkedin.com/in/matheus-calixto-silva)
+- [GitHub](https://github.com/matheus-calixto-silva)
+
+## Arquivos relacionados
+
+- [sitemap.xml](https://iamcalixto.dev.br/sitemap.xml)
+- [robots.txt](https://iamcalixto.dev.br/robots.txt)
