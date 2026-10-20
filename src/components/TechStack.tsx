@@ -1,86 +1,65 @@
-import type { LucideIcon } from 'lucide-react';
-import { CheckCircle, Layout, Server, Terminal } from 'lucide-react';
+import SectionLabel from '@/components/SectionLabel';
 import TechCategory from '@/components/TechCategory';
 
-interface CategoryData {
-  title: string;
-  icon: LucideIcon;
-  items: { name: string; primary?: boolean }[];
-}
-
-const categories: CategoryData[] = [
+const categories = [
   {
-    title: 'Frontend',
-    icon: Layout,
+    slug: 'frontend',
     items: [
-      { name: 'React', primary: true },
-      { name: 'Next.js', primary: true },
-      { name: 'Vue 3', primary: true },
-      { name: 'TypeScript', primary: true },
-      { name: 'Tailwind CSS', primary: true },
-      { name: 'Angular' },
-      { name: 'Ionic' },
-      { name: 'Zustand' },
-      { name: 'Storybook' },
+      'React',
+      'Next.js',
+      'Vue 3',
+      'TypeScript',
+      'Tailwind CSS',
+      'Angular',
+      'Ionic',
+      'Zustand',
+      'Storybook',
     ],
   },
   {
-    title: 'Backend',
-    icon: Server,
+    slug: 'backend',
     items: [
-      { name: 'NestJS', primary: true },
-      { name: 'HonoJS', primary: true },
-      { name: 'Node.js', primary: true },
-      { name: 'Laravel', primary: true },
-      { name: 'PostgreSQL', primary: true },
-      { name: 'Prisma ORM' },
-      { name: 'APIs REST' },
-      { name: 'JWT' },
+      'NestJS',
+      'HonoJS',
+      'Node.js',
+      'Laravel',
+      'PostgreSQL',
+      'Prisma ORM',
+      'APIs REST',
+      'JWT',
     ],
   },
   {
-    title: 'Qualidade',
-    icon: CheckCircle,
-    items: [
-      { name: 'Jest', primary: true },
-      { name: 'Vitest', primary: true },
-      { name: 'RTL' },
-      { name: 'SonarQube' },
-    ],
+    slug: 'qualidade',
+    items: ['Jest', 'Vitest', 'React Testing Library', 'SonarQube'],
   },
   {
-    title: 'DevOps & Ferramentas',
-    icon: Terminal,
-    items: [
-      { name: 'Docker', primary: true },
-      { name: 'Git Flow', primary: true },
-      { name: 'Grafana' },
-      { name: 'Swagger' },
-      { name: 'Husky' },
-    ],
+    slug: 'devops',
+    items: ['Docker', 'Git Flow', 'Grafana', 'Swagger', 'Husky'],
   },
 ];
 
+const techCount = categories.reduce((sum, cat) => sum + cat.items.length, 0);
+
 export default function TechStack() {
   return (
-    <section
-      id='stack'
-      className='py-24 md:py-32 bg-[#111111]/30 border-y border-white/5'
-    >
-      <div className='max-w-6xl mx-auto px-6 md:px-12'>
-        <h2 className='text-3xl md:text-4xl font-semibold tracking-tight text-[#EDEDED] mb-16 flex items-center gap-4'>
-          <span className='w-8 h-px bg-[#E63946]/50' />
-          Tech Stack
-        </h2>
+    <section id='stack' className='scroll-mt-[72px] border-b border-divider'>
+      <div className='mx-auto flex max-w-7xl flex-col gap-8 px-4 py-[72px] md:gap-14 md:px-8 md:py-32'>
+        <div className='flex flex-wrap items-end justify-between gap-6'>
+          <div className='flex flex-col gap-4 md:gap-5'>
+            <SectionLabel index='02'>Tech Stack</SectionLabel>
+            <p className='text-heading font-semibold'>
+              Ferramentas do dia a dia.
+            </p>
+          </div>
+          <span className='font-mono text-[13px] text-muted'>
+            {categories.length} áreas · {techCount} tecnologias
+          </span>
+        </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
+        <div className='grid grid-cols-2 border-t border-l border-hairline md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]'>
           {categories.map((cat) => (
-            <TechCategory
-              key={cat.title}
-              title={cat.title}
-              icon={cat.icon}
-              items={cat.items}
-            />
+            <TechCategory key={cat.slug} slug={cat.slug} items={cat.items} />
           ))}
         </div>
       </div>

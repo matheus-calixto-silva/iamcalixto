@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" rx="12" fill="#0a0a0a"/>
+  <rect width="100" height="100" fill="#121212"/>
   <text
     x="50"
     y="62"
@@ -9,6 +9,6 @@
     text-anchor="middle"
     letter-spacing="1"
   >
-    <tspan fill="#ededed">M</tspan><tspan fill="#e63946">.</tspan><tspan fill="#ededed">C</tspan>
+    <tspan fill="#ffffff">M</tspan><tspan fill="#da291c">.</tspan><tspan fill="#ffffff">C</tspan>
   </text>
 </svg>

@@ -1,3 +1,6 @@
+const linkedin = 'https://linkedin.com/in/matheus-calixto-silva';
+const github = 'https://github.com/matheus-calixto-silva';
+
 export const profile = {
   name: 'Matheus Calixto',
   title: 'Desenvolvedor Fullstack',
@@ -10,10 +13,9 @@ export const profile = {
     'Desenvolvedor Fullstack baseado em Recife, PE, com experiência em aplicações web e mobile, APIs e dashboards.',
   description:
     'Desenvolvedor Fullstack com experiência desde 2021 em React, Next.js, Vue, TypeScript, NestJS, HonoJS, Node.js e Laravel. Atua em aplicações web e mobile, APIs e dashboards. Baseado em Recife, Pernambuco, Brasil.',
-  socialLinks: [
-    'https://linkedin.com/in/matheus-calixto-silva',
-    'https://github.com/matheus-calixto-silva',
-  ],
+  linkedin,
+  github,
+  socialLinks: [linkedin, github],
   email: 'matheuscalixto8@gmail.com',
   whatsapp: 'https://wa.me/5581998143248',
   lastModified: '2026-10-05',

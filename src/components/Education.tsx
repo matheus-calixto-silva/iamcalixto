@@ -1,66 +1,46 @@
-import { Award, GraduationCap } from 'lucide-react';
+import SectionLabel from '@/components/SectionLabel';
+
+const certifications = [
+  { name: 'TypeScript & Full Stack', issuer: 'University of Helsinki' },
+  { name: 'React e JavaScript', issuer: 'Origamid' },
+  { name: 'Responsive Web Design', issuer: 'freeCodeCamp' },
+];
 
 export default function Education() {
   return (
-    <section className='py-24 md:py-32'>
-      <div className='max-w-6xl mx-auto px-6 md:px-12'>
-        <h2 className='text-3xl md:text-4xl font-semibold tracking-tight text-[#EDEDED] mb-12 flex items-center gap-4'>
-          <span className='w-8 h-px bg-[#E63946]/50' />
-          Formação &amp; Certificações
-        </h2>
+    <section
+      id='education'
+      className='scroll-mt-[72px] border-b border-divider'
+    >
+      <div className='mx-auto flex max-w-7xl flex-wrap gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
+        <div className='flex-[1_1_240px]'>
+          <SectionLabel index='04'>Formação e certificações</SectionLabel>
+        </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <div className='bg-[#111111] p-8 rounded-2xl border border-white/5 hover:border-white/10 transition-colors duration-300'>
-            <GraduationCap
-              strokeWidth={1.5}
-              className='w-6 h-6 text-[#E63946] mb-6'
-            />
-            <h3 className='text-xl font-medium text-[#EDEDED] mb-2'>
-              Tecnologia em ADS
+        <div className='grid min-w-0 flex-[999_1_640px] grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-7 md:gap-8'>
+          <div className='flex flex-col gap-3 border border-hairline bg-surface px-5 py-6 md:p-8'>
+            <span className='font-mono text-xs text-muted'>2017 — 2023</span>
+            <h3 className='text-[22px] font-semibold leading-tight tracking-[-0.02em] md:text-2xl'>
+              Tecnologia em Análise e Desenvolvimento de Sistemas
             </h3>
-            <p className='text-lg text-[#888888] font-light mb-4'>
+            <span className='text-[15px] text-body'>
               IFPE — Instituto Federal de Pernambuco
-            </p>
-            <span className='text-sm text-[#888888] font-medium tracking-wider uppercase'>
-              2017 – 2023
             </span>
           </div>
 
-          <div className='bg-[#111111] p-8 rounded-2xl border border-white/5 hover:border-white/10 transition-colors duration-300'>
-            <Award strokeWidth={1.5} className='w-6 h-6 text-[#8B5E6B] mb-6' />
-            <h3 className='text-xl font-medium text-[#EDEDED] mb-4'>
-              Certificações
-            </h3>
-            <ul className='space-y-3 text-lg text-[#888888] font-light'>
-              <li className='flex items-start gap-3'>
-                <span
-                  className='text-[#E63946] mt-1.5 text-xs'
-                  aria-hidden='true'
-                >
-                  ●
+          <ul className='border-t border-hairline'>
+            {certifications.map((cert) => (
+              <li
+                key={cert.name}
+                className='flex flex-col gap-1 border-b border-hairline py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 md:py-5'
+              >
+                <span className='text-base font-medium'>{cert.name}</span>
+                <span className='font-mono text-xs text-muted sm:text-right'>
+                  {cert.issuer}
                 </span>
-                TypeScript &amp; Full Stack (University of Helsinki)
               </li>
-              <li className='flex items-start gap-3'>
-                <span
-                  className='text-[#E63946] mt-1.5 text-xs'
-                  aria-hidden='true'
-                >
-                  ●
-                </span>
-                React e JavaScript (Origamid)
-              </li>
-              <li className='flex items-start gap-3'>
-                <span
-                  className='text-[#E63946] mt-1.5 text-xs'
-                  aria-hidden='true'
-                >
-                  ●
-                </span>
-                Responsive Web Design (freeCodeCamp)
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

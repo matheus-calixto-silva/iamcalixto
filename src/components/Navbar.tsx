@@ -4,124 +4,94 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
+const links = [
+  { href: '#about', label: 'Sobre' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#experience', label: 'Experiência' },
+  { href: '#faq', label: 'Perguntas' },
+  { href: '#contact', label: 'Contato' },
+];
+
+const focusRing =
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='fixed top-0 w-full z-50 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300'>
-      <div className='max-w-6xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between'>
+    <header className='sticky top-0 z-50 border-b border-divider bg-canvas'>
+      <div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-[72px] md:px-8'>
         <a
           href='/'
-          className='text-xl font-semibold tracking-tight text-[#EDEDED] flex items-center gap-1 group'
+          aria-label='Matheus Calixto — início'
+          className={`font-mono text-lg font-semibold tracking-[-0.5px] text-ink ${focusRing}`}
         >
-          M
-          <span className='text-[#E63946] transition-transform duration-300 group-hover:scale-125'>
-            .
-          </span>
-          C
+          M<span className='text-accent'>.</span>C
         </a>
 
-        <div className='hidden md:flex items-center gap-8 text-base text-[#888888]'>
-          <Link
-            href='#about'
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Sobre
-          </Link>
-          <Link
-            href='#stack'
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Stack
-          </Link>
-          <Link
-            href='#experience'
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Experiência
-          </Link>
-          <Link
-            href='#faq'
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Perguntas
-          </Link>
-          <Link
-            href='#contact'
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Contato
-          </Link>
-        </div>
-
-        <a
-          href='#contact'
-          className='hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-white/10 text-base text-[#EDEDED] hover:border-[#E63946]/50 hover:bg-[#E63946]/5 hover:shadow-[0_0_15px_rgba(230,57,70,0.15)] transition-all duration-300'
+        <nav
+          aria-label='Principal'
+          className='hidden items-center gap-1 md:flex'
         >
-          Fale comigo
-        </a>
-
-        <button
-          type='button'
-          className='md:hidden text-[#EDEDED]'
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-label='Menu'
-        >
-          {isOpen ? (
-            <X strokeWidth={1.5} className='w-6 h-6' />
-          ) : (
-            <Menu strokeWidth={1.5} className='w-6 h-6' />
-          )}
-        </button>
-      </div>
-
-      {isOpen && (
-        <div className='md:hidden border-t border-white/5 bg-[#0A0A0A]/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-4 text-base text-[#888888]'>
-          <Link
-            href='#about'
-            onClick={() => setIsOpen(false)}
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Sobre
-          </Link>
-          <Link
-            href='#stack'
-            onClick={() => setIsOpen(false)}
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Stack
-          </Link>
-          <Link
-            href='#experience'
-            onClick={() => setIsOpen(false)}
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Experiência
-          </Link>
-          <Link
-            href='#faq'
-            onClick={() => setIsOpen(false)}
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Perguntas
-          </Link>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`px-3.5 py-3 text-[13px] font-medium uppercase tracking-[0.05em] text-body transition-colors duration-200 hover:text-ink ${focusRing}`}
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
             href='#contact'
-            onClick={() => setIsOpen(false)}
-            className='hover:text-[#EDEDED] transition-colors duration-200'
-          >
-            Contato
-          </Link>
-          <Link
-            href='#contact'
-            onClick={() => setIsOpen(false)}
-            className='inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-white/10 text-[#EDEDED] hover:border-[#E63946]/50 hover:bg-[#E63946]/5 hover:shadow-[0_0_15px_rgba(230,57,70,0.15)] transition-all duration-300'
+            className={`ml-3 inline-flex h-11 items-center border border-ink px-5 text-[13px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:bg-ink hover:text-canvas ${focusRing}`}
           >
             Fale comigo
           </Link>
+        </nav>
+
+        <div className='flex items-center gap-2 md:hidden'>
+          <Link
+            href='#contact'
+            className={`inline-flex h-11 items-center border border-ink px-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-ink ${focusRing}`}
+          >
+            Fale comigo
+          </Link>
+          <button
+            type='button'
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls='mobile-menu'
+            aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+            className={`inline-flex size-11 items-center justify-center border border-hairline text-ink ${focusRing}`}
+          >
+            {isOpen ? (
+              <X strokeWidth={1.5} className='size-[18px]' />
+            ) : (
+              <Menu strokeWidth={1.5} className='size-[18px]' />
+            )}
+          </button>
         </div>
+      </div>
+
+      {isOpen && (
+        <nav
+          id='mobile-menu'
+          aria-label='Principal'
+          className='border-t border-divider px-4 md:hidden'
+        >
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`flex h-14 items-center border-b border-hairline text-[13px] font-medium uppercase tracking-[0.05em] text-body last:border-b-0 hover:text-ink ${focusRing}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       )}
-    </nav>
+    </header>
   );
 }
