@@ -2,7 +2,7 @@ import SectionLabel from '@/components/SectionLabel';
 
 export default function About() {
   return (
-    <section id='about' className='scroll-mt-[72px] border-b border-divider'>
+    <section id='about' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-wrap gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
         <div className='flex-[1_1_240px]'>
           <SectionLabel index='01'>Sobre</SectionLabel>

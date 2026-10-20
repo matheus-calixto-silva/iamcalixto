@@ -7,7 +7,7 @@ const focusRing =
 
 export default function Contact() {
   return (
-    <section id='contact' className='scroll-mt-[72px] bg-accent'>
+    <section id='contact' className='bg-accent'>
       <div className='mx-auto flex max-w-7xl flex-col gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
         <SectionLabel index='06' inverse>
           Contato
@@ -30,6 +30,7 @@ export default function Contact() {
               className={`inline-flex h-14 items-center justify-between gap-3 bg-canvas px-7 text-sm font-semibold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:bg-black ${focusRing}`}
             >
               WhatsApp
+              <span className='sr-only'> (abre em nova aba)</span>
               <ArrowRight strokeWidth={1.5} className='size-4' />
             </a>
             <a

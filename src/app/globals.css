@@ -34,7 +34,25 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 65px;
+}
+
+@media (min-width: 48rem) {
+  html {
+    scroll-padding-top: 73px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+a,
+button,
+summary {
+  scroll-margin-block: 1rem;
 }
 
 body {

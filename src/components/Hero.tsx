@@ -53,6 +53,7 @@ export default function Hero() {
                 className={`${outlineLink} justify-center`}
               >
                 LinkedIn
+                <span className='sr-only'> (abre em nova aba)</span>
                 <ArrowUpRight strokeWidth={1.5} className='size-3.5' />
               </a>
               <a
@@ -62,6 +63,7 @@ export default function Hero() {
                 className={`${outlineLink} justify-center`}
               >
                 GitHub
+                <span className='sr-only'> (abre em nova aba)</span>
                 <ArrowUpRight strokeWidth={1.5} className='size-3.5' />
               </a>
             </div>
