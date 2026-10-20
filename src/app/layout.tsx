@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { profile } from '@/data/profile';
+import { serializeJsonLd } from '@/lib/json-ld';
 import './globals.css';
 
 const inter = Inter({
@@ -9,65 +11,66 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title:
-    'Matheus Calixto | Desenvolvedor Fullstack — React, Node.js, TypeScript',
-  description:
-    'Matheus Calixto — Desenvolvedor Fullstack com +5 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js. Especialista em aplicações web e mobile escaláveis. Recife, PE.',
-  keywords:
-    'desenvolvedor fullstack, react, next.js, vue, nestjs, typescript, node.js, recife, pernambuco, frontend, backend, desenvolvedor web, portfolio',
+  metadataBase: new URL(profile.url),
+  title: {
+    default: `${profile.name} | ${profile.title}`,
+    template: `%s | ${profile.name}`,
+  },
+  description: profile.description,
+  keywords: [...profile.knowledgeAreas, profile.city, profile.region],
   authors: [{ name: 'Matheus Calixto' }],
-  robots: 'index, follow',
+  creator: profile.name,
+  robots: { index: true, follow: true },
   manifest: '/manifest.webmanifest',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    url: 'https://iamcalixto.dev.br/',
-    title: 'Matheus Calixto | Desenvolvedor Fullstack',
-    description:
-      'Desenvolvedor Fullstack com +5 anos de experiência em React, Next.js, Vue, NestJS e TypeScript. Construindo experiências web & mobile escaláveis.',
-    images: [{ url: 'https://iamcalixto.dev.br/og-image.jpg' }],
-    locale: 'pt_BR',
-    siteName: 'Matheus Calixto',
+    url: '/',
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.summary,
+    locale: profile.locale,
+    siteName: profile.name,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.summary,
   },
 };
 
-const jsonLd = {
+const jsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Matheus Calixto',
-  url: 'https://iamcalixto.dev.br',
-  jobTitle: 'Desenvolvedor Fullstack',
-  description:
-    'Desenvolvedor Fullstack com mais de 5 anos de experiência em React, Next.js, Vue, NestJS, TypeScript e Node.js.',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Recife',
-    addressRegion: 'PE',
-    addressCountry: 'BR',
-  },
-  sameAs: [
-    'https://linkedin.com/in/matheus-calixto-silva',
-    'https://github.com/matheus-calixto-silva',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${profile.url}/#website`,
+      url: profile.url,
+      name: profile.name,
+      inLanguage: 'pt-BR',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${profile.url}/#person`,
+      name: profile.name,
+      url: profile.url,
+      jobTitle: profile.title,
+      description: profile.description,
+      image: `${profile.url}/hero-img.webp`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: profile.city,
+        addressRegion: profile.region,
+        addressCountry: 'BR',
+      },
+      sameAs: profile.socialLinks,
+      knowsAbout: profile.knowledgeAreas,
+      alumniOf: {
+        '@type': 'EducationalOrganization',
+        name: 'IFPE — Instituto Federal de Pernambuco',
+      },
+      worksFor: { '@type': 'Organization', name: 'Green4T' },
+    },
   ],
-  knowsAbout: [
-    'React',
-    'Next.js',
-    'Vue.js',
-    'TypeScript',
-    'NestJS',
-    'HonoJS',
-    'Node.js',
-    'Laravel',
-    'PostgreSQL',
-    'Docker',
-  ],
-  alumniOf: {
-    '@type': 'EducationalOrganization',
-    name: 'IFPE — Instituto Federal de Pernambuco',
-  },
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Green4T',
-  },
 };
 
 export default function RootLayout({
@@ -81,9 +84,8 @@ export default function RootLayout({
         <script
           type='application/ld+json'
           // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
-        <link rel='canonical' href='https://iamcalixto.dev.br/' />
       </head>
       <body className='min-h-full flex flex-col relative overflow-x-hidden text-lg font-light'>
         {children}

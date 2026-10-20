@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,30 +22,36 @@ export default function Navbar() {
         </a>
 
         <div className='hidden md:flex items-center gap-8 text-base text-[#888888]'>
-          <a
+          <Link
             href='#about'
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Sobre
-          </a>
-          <a
+          </Link>
+          <Link
             href='#stack'
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Stack
-          </a>
-          <a
+          </Link>
+          <Link
             href='#experience'
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Experiência
-          </a>
-          <a
+          </Link>
+          <Link
+            href='#faq'
+            className='hover:text-[#EDEDED] transition-colors duration-200'
+          >
+            Perguntas
+          </Link>
+          <Link
             href='#contact'
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Contato
-          </a>
+          </Link>
         </div>
 
         <a
@@ -71,41 +78,48 @@ export default function Navbar() {
 
       {isOpen && (
         <div className='md:hidden border-t border-white/5 bg-[#0A0A0A]/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-4 text-base text-[#888888]'>
-          <a
+          <Link
             href='#about'
             onClick={() => setIsOpen(false)}
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Sobre
-          </a>
-          <a
+          </Link>
+          <Link
             href='#stack'
             onClick={() => setIsOpen(false)}
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Stack
-          </a>
-          <a
+          </Link>
+          <Link
             href='#experience'
             onClick={() => setIsOpen(false)}
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Experiência
-          </a>
-          <a
+          </Link>
+          <Link
+            href='#faq'
+            onClick={() => setIsOpen(false)}
+            className='hover:text-[#EDEDED] transition-colors duration-200'
+          >
+            Perguntas
+          </Link>
+          <Link
             href='#contact'
             onClick={() => setIsOpen(false)}
             className='hover:text-[#EDEDED] transition-colors duration-200'
           >
             Contato
-          </a>
-          <a
+          </Link>
+          <Link
             href='#contact'
             onClick={() => setIsOpen(false)}
             className='inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-white/10 text-[#EDEDED] hover:border-[#E63946]/50 hover:bg-[#E63946]/5 hover:shadow-[0_0_15px_rgba(230,57,70,0.15)] transition-all duration-300'
           >
             Fale comigo
-          </a>
+          </Link>
         </div>
       )}
     </nav>

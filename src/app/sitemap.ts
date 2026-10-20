@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
+import { profile } from '@/data/profile';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://iamcalixto.dev.br',
-      lastModified: new Date(),
+      url: profile.url,
+      lastModified: new Date(profile.lastModified),
       changeFrequency: 'monthly',
       priority: 1,
     },
