@@ -46,10 +46,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section
-      id='experience'
-      className='scroll-mt-[72px] border-b border-divider'
-    >
+    <section id='experience' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-col gap-8 px-4 py-[72px] md:gap-14 md:px-8 md:py-32'>
         <div className='flex flex-col gap-4 md:gap-5'>
           <SectionLabel index='03'>Experiência</SectionLabel>

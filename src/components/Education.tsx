@@ -8,10 +8,7 @@ const certifications = [
 
 export default function Education() {
   return (
-    <section
-      id='education'
-      className='scroll-mt-[72px] border-b border-divider'
-    >
+    <section id='education' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-wrap gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
         <div className='flex-[1_1_240px]'>
           <SectionLabel index='04'>Formação e certificações</SectionLabel>

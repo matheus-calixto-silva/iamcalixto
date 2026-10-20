@@ -1,8 +1,7 @@
 'use client';
 
 import { Menu, X } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const links = [
   { href: '#about', label: 'Sobre' },
@@ -17,13 +16,27 @@ const focusRing =
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      setIsOpen(false);
+      menuButtonRef.current?.focus();
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   return (
     <header className='sticky top-0 z-50 border-b border-divider bg-canvas'>
       <div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-[72px] md:px-8'>
         <a
           href='/'
-          aria-label='Matheus Calixto — início'
+          aria-label='M.C — Matheus Calixto, página inicial'
           className={`font-mono text-lg font-semibold tracking-[-0.5px] text-ink ${focusRing}`}
         >
           M<span className='text-accent'>.</span>C
@@ -34,30 +47,31 @@ export default function Navbar() {
           className='hidden items-center gap-1 md:flex'
         >
           {links.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
               className={`px-3.5 py-3 text-[13px] font-medium uppercase tracking-[0.05em] text-body transition-colors duration-200 hover:text-ink ${focusRing}`}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
-          <Link
+          <a
             href='#contact'
             className={`ml-3 inline-flex h-11 items-center border border-ink px-5 text-[13px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:bg-ink hover:text-canvas ${focusRing}`}
           >
             Fale comigo
-          </Link>
+          </a>
         </nav>
 
         <div className='flex items-center gap-2 md:hidden'>
-          <Link
+          <a
             href='#contact'
             className={`inline-flex h-11 items-center border border-ink px-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-ink ${focusRing}`}
           >
             Fale comigo
-          </Link>
+          </a>
           <button
+            ref={menuButtonRef}
             type='button'
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
@@ -74,24 +88,23 @@ export default function Navbar() {
         </div>
       </div>
 
-      {isOpen && (
-        <nav
-          id='mobile-menu'
-          aria-label='Principal'
-          className='border-t border-divider px-4 md:hidden'
-        >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={`flex h-14 items-center border-b border-hairline text-[13px] font-medium uppercase tracking-[0.05em] text-body last:border-b-0 hover:text-ink ${focusRing}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      )}
+      <nav
+        id='mobile-menu'
+        aria-label='Principal'
+        hidden={!isOpen}
+        className='border-t border-divider px-4 md:hidden'
+      >
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={() => setIsOpen(false)}
+            className={`flex h-14 items-center border-b border-hairline text-[13px] font-medium uppercase tracking-[0.05em] text-body last:border-b-0 hover:text-ink ${focusRing}`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }

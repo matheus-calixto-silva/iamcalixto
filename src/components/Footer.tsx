@@ -30,6 +30,9 @@ export default function Footer() {
               className='border-b border-hairline py-3.5 text-body transition-colors duration-200 hover:text-accent-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text md:border-b-0 md:p-3'
             >
               {social.label}
+              {social.external && (
+                <span className='sr-only'> (abre em nova aba)</span>
+              )}
             </a>
           ))}
         </nav>

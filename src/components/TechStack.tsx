@@ -43,7 +43,7 @@ const techCount = categories.reduce((sum, cat) => sum + cat.items.length, 0);
 
 export default function TechStack() {
   return (
-    <section id='stack' className='scroll-mt-[72px] border-b border-divider'>
+    <section id='stack' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-col gap-8 px-4 py-[72px] md:gap-14 md:px-8 md:py-32'>
         <div className='flex flex-wrap items-end justify-between gap-6'>
           <div className='flex flex-col gap-4 md:gap-5'>

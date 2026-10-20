@@ -3,7 +3,7 @@ import { faqItems } from '@/data/faq';
 
 export default function FAQ() {
   return (
-    <section id='faq' className='scroll-mt-[72px] border-b border-divider'>
+    <section id='faq' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-wrap gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
         <div className='flex-[1_1_240px]'>
           <SectionLabel index='05'>Perguntas frequentes</SectionLabel>
@@ -20,7 +20,7 @@ export default function FAQ() {
                   {question}
                   <span
                     aria-hidden='true'
-                    className='font-mono text-accent-text transition-transform duration-200 group-open:rotate-45'
+                    className='font-mono text-accent-text duration-200 motion-safe:transition-transform group-open:rotate-45'
                   >
                     +
                   </span>
