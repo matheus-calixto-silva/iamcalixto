@@ -1,13 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { profile } from '@/data/profile';
 import { serializeJsonLd } from '@/lib/json-ld';
 import './globals.css';
 
-const inter = Inter({
-  variable: '--font-inter',
+const geist = Geist({
+  variable: '--font-geist',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -79,7 +83,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-BR' className={`${inter.variable} h-full`}>
+    <html
+      lang='pt-BR'
+      className={`${geist.variable} ${geistMono.variable} h-full`}
+    >
       <head>
         <script
           type='application/ld+json'
@@ -87,7 +94,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
-      <body className='min-h-full flex flex-col relative overflow-x-hidden text-lg font-light'>
+      <body className='min-h-full flex flex-col bg-canvas text-ink font-sans overflow-x-clip'>
         {children}
       </body>
     </html>

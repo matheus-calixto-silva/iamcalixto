@@ -1,45 +1,55 @@
 interface ExperienceItemProps {
+  company: string;
+  location: string;
   role: string;
   level?: string;
-  company: string;
-  companyColor: string;
-  dotColor: string;
   period: string;
+  current?: boolean;
   description: string;
+  tags: string[];
 }
 
 export default function ExperienceItem({
+  company,
+  location,
   role,
   level,
-  company,
-  companyColor,
-  dotColor,
   period,
+  current,
   description,
+  tags,
 }: ExperienceItemProps) {
   return (
-    <div className='relative pl-8 md:pl-12 group'>
-      <div
-        className='absolute w-3 h-3 bg-[#0A0A0A] border-2 rounded-full -left-[6.5px] top-2 transition-all duration-300 group-hover:scale-150 group-hover:border-[#E63946]'
-        style={{ borderColor: dotColor }}
-      />
-      <div className='flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-3'>
-        <h3 className='text-2xl font-medium tracking-tight text-[#EDEDED]'>
-          {role}{' '}
-          {level && (
-            <span className='text-[#888888] font-light text-xl'>({level})</span>
+    <li className='flex flex-wrap gap-x-12 gap-y-3 border-b border-hairline py-7 md:py-10'>
+      <div className='flex flex-[1_1_220px] justify-between gap-2 font-mono text-xs md:flex-col md:justify-start md:text-[13px]'>
+        <span className='inline-flex items-center gap-2 text-ink'>
+          {current && (
+            <span aria-hidden='true' className='size-1.5 bg-accent' />
           )}
-        </h3>
-        <span className='text-base text-[#888888] font-light md:ml-auto'>
           {period}
         </span>
+        <span className='text-muted'>{location}</span>
       </div>
-      <h4 className='text-lg mb-4' style={{ color: companyColor }}>
-        {company}
-      </h4>
-      <p className='text-lg text-[#888888] font-light leading-relaxed'>
-        {description}
-      </p>
-    </div>
+
+      <div className='flex min-w-0 flex-[999_1_560px] flex-col gap-3'>
+        <div className='flex flex-col gap-1 md:flex-row md:flex-wrap md:items-baseline md:gap-x-4'>
+          <h3 className='text-title font-semibold'>{company}</h3>
+          <span className='text-[15px] text-body md:text-base'>
+            {role}
+            {level && ` · ${level}`}
+          </span>
+        </div>
+        <p className='max-w-[720px] text-[15px] leading-relaxed text-body md:text-base'>
+          {description}
+        </p>
+        <ul className='flex flex-wrap gap-2 pt-1 font-mono text-xs text-body'>
+          {tags.map((tag) => (
+            <li key={tag} className='border border-hairline px-2.5 py-1'>
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
   );
 }
