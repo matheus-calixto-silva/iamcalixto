@@ -1,11 +1,11 @@
 import type { MetadataRoute } from 'next';
+import { profile } from '@/data/profile';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Matheus Calixto | Desenvolvedor Fullstack',
+    name: `${profile.name} | ${profile.title}`,
     short_name: 'iamcalixto',
-    description:
-      'Desenvolvedor Fullstack com +5 anos de experiência em React, Next.js, Vue, NestJS e TypeScript.',
+    description: profile.description,
     start_url: '/',
     display: 'standalone',
     background_color: '#0a0a0a',

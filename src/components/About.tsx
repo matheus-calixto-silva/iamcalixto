@@ -9,10 +9,9 @@ export default function About() {
 
         <div className='max-w-3xl'>
           <p className='text-xl md:text-2xl text-[#888888] font-light leading-relaxed'>
-            Com mais de{' '}
-            <span className='text-[#EDEDED]'>5 anos de experiência</span>, sou
-            especialista em construir aplicações completas de ponta a ponta.
-            Minha stack principal gira em torno de{' '}
+            Atuo em desenvolvimento Fullstack desde 2021, criando aplicações{' '}
+            <span className='text-[#EDEDED]'>web e mobile</span>, APIs e
+            dashboards. Minha stack principal inclui{' '}
             <span className='text-[#EDEDED]'>React</span>,{' '}
             <span className='text-[#EDEDED]'>Vue</span>,{' '}
             <span className='text-[#EDEDED]'>TypeScript</span>,{' '}
@@ -21,9 +20,8 @@ export default function About() {
             <span className='text-[#EDEDED]'>Laravel</span>.
           </p>
           <p className='text-xl md:text-2xl text-[#888888] font-light leading-relaxed mt-6'>
-            De interfaces frontend pixel-perfect a APIs REST complexas e
-            sistemas de rastreamento em tempo real, meu foco é entregar soluções
-            escaláveis. Atualmente expandindo minha expertise em{' '}
+            Tenho experiência com APIs REST, sistemas de rastreamento em tempo
+            real e desenvolvimento de frontend e backend. Também estudo{' '}
             <span className='text-[#8B5E6B]'>Arquitetura de Software</span> e{' '}
             <span className='text-[#8B5E6B]'>Design Systems</span>.
           </p>

@@ -47,7 +47,8 @@ export default function Footer() {
 
         <div className='mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6'>
           <p className='text-base text-[#888888] font-light'>
-            © 2025 Matheus Calixto. Todos os direitos reservados.
+            © {new Date().getFullYear()} Matheus Calixto. Todos os direitos
+            reservados.
           </p>
           <div className='flex items-center gap-6 text-base'>
             <a
