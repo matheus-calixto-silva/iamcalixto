@@ -2,21 +2,29 @@
 
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-
-const links = [
-  { href: '#about', label: 'Sobre' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#experience', label: 'Experiência' },
-  { href: '#faq', label: 'Perguntas' },
-  { href: '#contact', label: 'Contato' },
-];
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { type Locale, localePath } from '@/i18n/config';
+import type { Dictionary } from '@/i18n/types';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text';
 
-export default function Navbar() {
+interface NavbarProps {
+  locale: Locale;
+  dict: Dictionary['nav'];
+}
+
+export default function Navbar({ locale, dict }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const links = [
+    { href: '#about', label: dict.about },
+    { href: '#stack', label: dict.stack },
+    { href: '#experience', label: dict.experience },
+    { href: '#faq', label: dict.faq },
+    { href: '#contact', label: dict.contact },
+  ];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -35,16 +43,16 @@ export default function Navbar() {
     <header className='sticky top-0 z-50 border-b border-divider bg-canvas'>
       <div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-[72px] md:px-8'>
         <a
-          href='/'
-          aria-label='M.C — Matheus Calixto, página inicial'
+          href={localePath(locale)}
+          aria-label={dict.homeAriaLabel}
           className={`font-mono text-lg font-semibold tracking-[-0.5px] text-ink ${focusRing}`}
         >
           M<span className='text-accent'>.</span>C
         </a>
 
         <nav
-          aria-label='Principal'
-          className='hidden items-center gap-1 md:flex'
+          aria-label={dict.ariaLabel}
+          className='hidden items-center gap-1 lg:flex'
         >
           {links.map((link) => (
             <a
@@ -55,20 +63,26 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher
+            current={locale}
+            label={dict.language}
+            className='ml-2'
+            linkClassName='h-11 px-2.5'
+          />
           <a
             href='#contact'
             className={`ml-3 inline-flex h-11 items-center border border-ink px-5 text-[13px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:bg-ink hover:text-canvas ${focusRing}`}
           >
-            Fale comigo
+            {dict.cta}
           </a>
         </nav>
 
-        <div className='flex items-center gap-2 md:hidden'>
+        <div className='flex items-center gap-2 lg:hidden'>
           <a
             href='#contact'
             className={`inline-flex h-11 items-center border border-ink px-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-ink ${focusRing}`}
           >
-            Fale comigo
+            {dict.cta}
           </a>
           <button
             ref={menuButtonRef}
@@ -76,7 +90,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls='mobile-menu'
-            aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-label={isOpen ? dict.closeMenu : dict.openMenu}
             className={`inline-flex size-11 items-center justify-center border border-hairline text-ink ${focusRing}`}
           >
             {isOpen ? (
@@ -90,20 +104,26 @@ export default function Navbar() {
 
       <nav
         id='mobile-menu'
-        aria-label='Principal'
+        aria-label={dict.ariaLabel}
         hidden={!isOpen}
-        className='border-t border-divider px-4 md:hidden'
+        className='border-t border-divider px-4 lg:hidden'
       >
         {links.map((link) => (
           <a
             key={link.href}
             href={link.href}
             onClick={() => setIsOpen(false)}
-            className={`flex h-14 items-center border-b border-hairline text-[13px] font-medium uppercase tracking-[0.05em] text-body last:border-b-0 hover:text-ink ${focusRing}`}
+            className={`flex h-14 items-center border-b border-hairline text-[13px] font-medium uppercase tracking-[0.05em] text-body hover:text-ink ${focusRing}`}
           >
             {link.label}
           </a>
         ))}
+        <LanguageSwitcher
+          current={locale}
+          label={dict.language}
+          className='py-1'
+          linkClassName='h-14 w-full'
+        />
       </nav>
     </header>
   );

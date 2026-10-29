@@ -1,16 +1,16 @@
 import SectionLabel from '@/components/SectionLabel';
-import { faqItems } from '@/data/faq';
+import type { Dictionary } from '@/i18n/types';
 
-export default function FAQ() {
+export default function FAQ({ dict }: { dict: Dictionary['faq'] }) {
   return (
     <section id='faq' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-wrap gap-7 px-4 py-[72px] md:gap-12 md:px-8 md:py-32'>
         <div className='flex-[1_1_240px]'>
-          <SectionLabel index='05'>Perguntas frequentes</SectionLabel>
+          <SectionLabel index='05'>{dict.label}</SectionLabel>
         </div>
 
         <div className='min-w-0 flex-[999_1_640px] border-t border-hairline'>
-          {faqItems.map(({ question, answer }) => (
+          {dict.items.map(({ question, answer }) => (
             <details
               key={question}
               className='group border-b border-hairline py-6'

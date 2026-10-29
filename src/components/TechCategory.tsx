@@ -1,13 +1,13 @@
 interface TechCategoryProps {
-  slug: string;
-  items: string[];
+  label: string;
+  items: readonly string[];
 }
 
-export default function TechCategory({ slug, items }: TechCategoryProps) {
+export default function TechCategory({ label, items }: TechCategoryProps) {
   return (
     <div className='flex flex-col gap-4 border-r border-b border-hairline px-4 py-5 md:gap-6 md:p-8'>
       <div className='flex justify-between font-mono text-xs text-muted'>
-        <h3 className='font-normal'>/{slug}</h3>
+        <h3 className='font-normal'>/{label}</h3>
         <span aria-hidden='true' className='max-md:hidden'>
           {String(items.length).padStart(2, '0')}
         </span>

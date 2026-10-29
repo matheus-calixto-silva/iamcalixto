@@ -1,11 +1,32 @@
 import { ImageResponse } from 'next/og';
 import { profile } from '@/data/profile';
+import { hasLocale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/get-dictionary';
 
-export const alt = 'Matheus Calixto — Desenvolvedor Fullstack';
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
+type LangParams = { params: Promise<{ lang: string }> };
 
-export default function OpenGraphImage() {
+const size = { width: 1200, height: 630 };
+
+export async function generateImageMetadata({ params }: LangParams) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) return [];
+
+  return [
+    {
+      id: 'card',
+      alt: getDictionary(lang).meta.ogAlt,
+      size,
+      contentType: 'image/png',
+    },
+  ];
+}
+
+export default async function OpenGraphImage({ params }: LangParams) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) return new Response(null, { status: 404 });
+
+  const { meta } = getDictionary(lang);
+
   return new ImageResponse(
     <div
       style={{
@@ -30,7 +51,7 @@ export default function OpenGraphImage() {
             textTransform: 'uppercase',
           }}
         >
-          Portfólio
+          {meta.ogLabel}
         </span>
       </div>
       <div
@@ -47,7 +68,7 @@ export default function OpenGraphImage() {
         <span style={{ color: '#da291c' }}>.</span>
       </div>
       <span style={{ color: '#a3a3a3', fontSize: 36, marginTop: 28 }}>
-        {profile.title} · {profile.city}, {profile.region}
+        {meta.jobTitle} · {profile.city}, {profile.region}
       </span>
       <span style={{ color: '#8f8f8f', fontSize: 24, marginTop: 48 }}>
         iamcalixto.dev.br
