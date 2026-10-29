@@ -1,13 +1,20 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { profile } from '@/data/profile';
+import type { Dictionary } from '@/i18n/types';
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text';
 
 const outlineLink = `inline-flex h-[52px] items-center gap-2 border border-hairline px-[22px] font-mono text-[13px] text-ink transition-colors duration-200 hover:border-ink ${focusRing}`;
 
-export default function Hero() {
+interface HeroProps {
+  dict: Dictionary;
+}
+
+export default function Hero({ dict }: HeroProps) {
+  const { hero, meta, a11y } = dict;
+
   return (
     <section id='top' className='border-b border-divider'>
       <div className='mx-auto flex max-w-7xl flex-wrap items-end gap-8 px-4 pt-12 md:gap-16 md:px-8 md:pt-24'>
@@ -17,12 +24,12 @@ export default function Hero() {
               aria-hidden='true'
               className='inline-block size-2 bg-accent'
             />
-            <span>Disponível para novos projetos</span>
+            <span>{hero.availability}</span>
             <span aria-hidden='true' className='text-faint'>
               /
             </span>
             <span>
-              {profile.city}, {profile.region} — {profile.country}
+              {profile.city}, {profile.region} — {meta.country}
             </span>
           </div>
 
@@ -33,8 +40,9 @@ export default function Hero() {
           </h1>
 
           <p className='max-w-[560px] text-[17px] leading-normal text-body md:text-xl'>
-            Desenvolvedor Fullstack · Construindo experiências{' '}
-            <span className='text-ink'>web &amp; mobile</span> escaláveis.
+            {hero.taglineBefore}
+            <span className='text-ink'>{hero.taglineHighlight}</span>
+            {hero.taglineAfter}
           </p>
 
           <div className='flex flex-col gap-2 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3'>
@@ -42,7 +50,7 @@ export default function Hero() {
               href='#contact'
               className={`inline-flex h-[52px] items-center justify-between gap-3 bg-accent px-7 text-sm font-semibold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:bg-accent-hover ${focusRing}`}
             >
-              Entre em contato
+              {hero.cta}
               <ArrowRight strokeWidth={1.5} className='size-4' />
             </a>
             <div className='grid grid-cols-2 gap-2 sm:flex sm:gap-3'>
@@ -53,7 +61,7 @@ export default function Hero() {
                 className={`${outlineLink} justify-center`}
               >
                 LinkedIn
-                <span className='sr-only'> (abre em nova aba)</span>
+                <span className='sr-only'>{a11y.opensInNewTab}</span>
                 <ArrowUpRight strokeWidth={1.5} className='size-3.5' />
               </a>
               <a
@@ -63,7 +71,7 @@ export default function Hero() {
                 className={`${outlineLink} justify-center`}
               >
                 GitHub
-                <span className='sr-only'> (abre em nova aba)</span>
+                <span className='sr-only'>{a11y.opensInNewTab}</span>
                 <ArrowUpRight strokeWidth={1.5} className='size-3.5' />
               </a>
             </div>
@@ -74,7 +82,7 @@ export default function Hero() {
           <div className='relative min-h-[420px] flex-1 overflow-hidden border border-b-0 border-hairline bg-surface md:min-h-[480px]'>
             <Image
               src='/hero-img.webp'
-              alt='Retrato de Matheus Calixto sob luz vermelha'
+              alt={hero.imageAlt}
               fill
               priority
               sizes='(min-width: 768px) 440px, 100vw'
@@ -89,7 +97,7 @@ export default function Hero() {
             <span>
               MC — {profile.city}, {profile.region}
             </span>
-            <span>Fullstack · desde 2021</span>
+            <span>{hero.caption}</span>
           </figcaption>
         </figure>
       </div>

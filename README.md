@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# iamcalixto
 
-## Getting Started
+Portfólio de Matheus Calixto — desenvolvedor Full Stack em Recife, Brasil.
+Disponível em três idiomas: português, inglês e espanhol.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · TypeScript · Biome · pnpm
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm dev      # servidor de desenvolvimento
+pnpm build    # build de produção
+pnpm start    # serve o build
+pnpm lint     # biome check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requer Node 24.x (ver `engines` no `package.json`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Internacionalização (i18n)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Sem biblioteca: usa os recursos nativos do Next.js.
 
-## Learn More
+### URLs
 
-To learn more about Next.js, take a look at the following resources:
+| Idioma    | URL   |
+| --------- | ----- |
+| Português | `/`   |
+| English   | `/en` |
+| Español   | `/es` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O português continua em `/` para manter a URL que já está indexada. Internamente
+o `src/proxy.ts` reescreve `/` para `/pt`, e `/pt` redireciona (308) para `/`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Detecção de idioma
 
-## Deploy on Vercel
+Acontece só na home (`/`), em `src/proxy.ts`, nesta ordem:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Cookie `NEXT_LOCALE` (gravado quando o visitante clica no seletor de idioma);
+2. Crawlers e link previews sempre recebem português;
+3. Cabeçalho `Accept-Language` (primeiro idioma suportado, por `q`). Idioma não
+   suportado cai para inglês; sem cabeçalho, português.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Estrutura
+
+```
+src/i18n/
+  config.ts          # locales, locale padrão, metadados, helpers de URL
+  types.ts           # interface Dictionary (garante que todos os idiomas tenham as mesmas chaves)
+  get-dictionary.ts
+  dictionaries/      # pt.ts, en.ts, es.ts
+src/data/            # fatos independentes de idioma (empresas, tags, links, stack)
+src/app/[lang]/      # layout, página e imagem Open Graph por idioma
+src/proxy.ts         # redirecionamento / detecção
+```
+
+### Adicionar uma chave de texto
+
+1. Adicione o campo em `Dictionary` (`src/i18n/types.ts`);
+2. O TypeScript vai apontar os três dicionários que faltam preencher.
+
+### Adicionar um idioma
+
+1. Inclua o código em `locales` e em `localeMeta` (`src/i18n/config.ts`);
+2. Crie `src/i18n/dictionaries/<codigo>.ts` e registre em `get-dictionary.ts`;
+3. Se for detectável pelo navegador, ajuste `localeFromAcceptLanguage` em `src/proxy.ts`.
+
+### SEO
+
+Cada idioma tem `<html lang>`, título/descrição, canonical, `hreflang`
+(com `x-default` apontando para `/`), entradas no sitemap com alternates,
+JSON-LD (WebSite, Person, ProfilePage) e imagem Open Graph próprios.
